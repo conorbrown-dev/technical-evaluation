@@ -1,6 +1,15 @@
-﻿namespace Application;
+﻿using Application.Users;
+using Microsoft.Extensions.DependencyInjection;
 
-public class DependencyInjection
+namespace Application;
+
+public static class DependencyInjection
 {
-    
+    public static IServiceCollection AddApplication(this IServiceCollection services)
+    {
+        services.AddScoped<IUserValidator, UserValidator>();
+        services.AddScoped<IUserService, UserService>();
+
+        return services;
+    }
 }
